@@ -27,7 +27,7 @@
         <dependency>
             <groupId>apereo</groupId>
             <artifactId>lai-event</artifactId>
-            <version>1.2.2</version>
+            <version>1.2.1</version>
         </dependency>
         <dependency>
             <groupId>apereo</groupId>
