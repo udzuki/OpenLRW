@@ -40,6 +40,19 @@ public class OrgController {
     return new ResponseEntity<>(savedOrg, httpHeaders, HttpStatus.CREATED);
   }
 
+  /**
+   * original route for create org with identified tenant
+   */
+  @RequestMapping(value = "/tenant/{tenantId}", method = RequestMethod.POST)
+  public ResponseEntity<?> postWithTenant(JwtAuthenticationToken token, @RequestBody Org org, @PathVariable final String tenantId) {
+    Org savedOrg = this.orgService.save(tenantId, org);
+    HttpHeaders httpHeaders = new HttpHeaders();
+    httpHeaders.setLocation(ServletUriComponentsBuilder
+        .fromCurrentRequest().path("/{id}")
+        .buildAndExpand(savedOrg.getSourcedId()).toUri());
+    return new ResponseEntity<>(savedOrg, httpHeaders, HttpStatus.CREATED);
+  }
+
   @RequestMapping(value = "/{orgId}", method = RequestMethod.GET)
   public Org getOne(JwtAuthenticationToken token, @PathVariable final String orgId) throws OrgNotFoundException {
     UserContext userContext = (UserContext) token.getPrincipal();
