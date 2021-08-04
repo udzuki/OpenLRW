@@ -42,7 +42,10 @@ public class DefaultUserIdConverter implements UserIdConverter {
         String tenantUserPrefix = tenantMetadata.get(Vocabulary.TENANT_USER_PREFIX);
         if (StringUtils.isNotBlank(tenantUserPrefix)) {
           String agentIdAfterPrefix = StringUtils.substringAfter(agentId, tenantUserPrefix);
-          if (StringUtils.startsWith(agentIdAfterPrefix, "/")) {
+          if (agentIdAfterPrefix.contains("id=")) {
+            convertedUserId = StringUtils.substringAfter(agentIdAfterPrefix, "id=");
+          }
+          else if (StringUtils.startsWith(agentIdAfterPrefix, "/")) {
             convertedUserId = StringUtils.substringAfter(agentIdAfterPrefix, "/");
           }
           else {
@@ -51,7 +54,12 @@ public class DefaultUserIdConverter implements UserIdConverter {
         }
       }
       else {
-        convertedUserId = StringUtils.substringAfterLast(agentId, "/");
+        if (agentId.contains("id=")) {
+          convertedUserId = StringUtils.substringAfterLast(agentId, "id=");
+        }
+        else {
+          convertedUserId = StringUtils.substringAfterLast(agentId, "/");
+        }
 
         if (agentId.contains("ncsu.edu")) {
           UserMapping userMapping = mongoUserMappingRepository.findByTenantIdAndUserExternalIdIgnoreCase(tenant.getId(), convertedUserId);
