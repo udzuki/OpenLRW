@@ -2,6 +2,8 @@ package org.apereo.openlrw.event.caliper;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonNode;
+
 import org.apereo.openlrw.OpenLRW;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,10 +46,11 @@ public class AgentTest {
       .build();
     
     String result = mapper.writeValueAsString(agent);
-    assertThat(result, containsString("@id"));
-    assertThat(result, containsString("@type"));
-    assertThat(result, containsString("type1"));
-    assertThat(result, containsString("id1"));
+    JsonNode jsonNode = mapper.readTree(result);
+    assert jsonNode.has("id");
+    assert jsonNode.get("id").asText().equals("id1");
+    assert jsonNode.has("type");
+    assert jsonNode.get("type").asText().equals("type1");
   }
   
   @Test
@@ -65,14 +68,20 @@ public class AgentTest {
       .build();
     
     String result = mapper.writeValueAsString(agent);
-    assertThat(result, containsString("@id"));
-    assertThat(result, containsString("@type"));
-    assertThat(result, containsString("type1"));
-    assertThat(result, containsString("id1"));
-    assertThat(result, containsString("name1"));
-    assertThat(result, containsString("description1"));
-    assertThat(result, containsString("foo"));
-    assertThat(result, containsString("bar"));
+    JsonNode jsonNode = mapper.readTree(result);
+    assert jsonNode.has("id");
+    assert jsonNode.get("id").asText().equals("id1");
+    assert jsonNode.has("type");
+    assert jsonNode.get("type").asText().equals("type1");
+    assert jsonNode.has("name");
+    assert jsonNode.get("name").asText().equals("name1");
+    assert jsonNode.has("description");
+    assert jsonNode.get("description").asText().equals("description1");
+    assert jsonNode.has("extensions");
+    assert jsonNode.get("extensions").has("foo");
+    assert jsonNode.get("extensions").get("foo").asText().equals("bar");
+    assert jsonNode.has("dateCreated");
+    assert jsonNode.has("dateModified");
   }
 
 }

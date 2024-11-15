@@ -2,6 +2,7 @@ package org.apereo.openlrw.event.caliper;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.apereo.openlrw.OpenLRW;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -55,20 +56,24 @@ public class EventTest {
         .build();
     
     String result = mapper.writeValueAsString(basicEvent);
-    assertThat(result, containsString("action1"));
-    assertThat(result, containsString("@context"));
-    assertThat(result, containsString("context1"));
-    assertThat(result, containsString("type1"));
-    assertThat(result, containsString("@id"));
-    assertThat(result, containsString("@type"));
-    assertThat(result, containsString("type1"));
-    assertThat(result, containsString("id1"));
-    assertThat(result, containsString("actor"));
-    assertThat(result, containsString("agent_id1"));
-    assertThat(result, containsString("agent_type1"));
-    assertThat(result, containsString("object"));
-    assertThat(result, containsString("entity_id1"));
-    assertThat(result, containsString("entity_type1"));
+    JsonNode jsonNode = mapper.readTree(result);
+    assert jsonNode.has("action");
+    assert jsonNode.get("action").asText().equals("action1");
+    assert jsonNode.has("@context");
+    assert jsonNode.get("@context").asText().equals("context1");
+    assert jsonNode.has("type");
+    assert jsonNode.get("type").asText().equals("type1");
+    assert jsonNode.has("eventTime");
+    assert jsonNode.has("actor");
+    assert jsonNode.get("actor").has("id");
+    assert jsonNode.get("actor").get("id").asText().equals("agent_id1");
+    assert jsonNode.get("actor").has("type");
+    assert jsonNode.get("actor").get("type").asText().equals("agent_type1");
+    assert jsonNode.has("object");
+    assert jsonNode.get("object").has("id");
+    assert jsonNode.get("object").get("id").asText().equals("entity_id1");
+    assert jsonNode.get("object").has("type");
+    assert jsonNode.get("object").get("type").asText().equals("entity_type1");
   }
 
 }

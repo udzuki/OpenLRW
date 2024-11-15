@@ -31,11 +31,11 @@ public class MediaEventTest {
       "\"data\": ["+
         "{"+
           "\"@context\": \"http://purl.imsglobal.org/ctx/caliper/v1/Context\","+
-          "\"@type\": \"http://purl.imsglobal.org/caliper/v1/MediaEvent\","+
+          "\"type\": \"http://purl.imsglobal.org/caliper/v1/MediaEvent\","+
           "\"actor\": {"+
               "\"@context\": \"http://purl.imsglobal.org/ctx/caliper/v1/Context\","+
-                "\"@id\": \"https://example.edu/user/554433\","+
-                "\"@type\": \"http://purl.imsglobal.org/caliper/v1/lis/Person\","+
+                "\"id\": \"https://example.edu/user/554433\","+
+                "\"type\": \"http://purl.imsglobal.org/caliper/v1/lis/Person\","+
                 "\"name\": null,"+
                 "\"description\": null,"+
                 "\"extensions\": { },"+
@@ -45,16 +45,16 @@ public class MediaEventTest {
           "\"action\": \"http://purl.imsglobal.org/vocab/caliper/v1/action#Paused\","+
           "\"object\": {"+
               "\"@context\": \"http://purl.imsglobal.org/ctx/caliper/v1/Context\","+
-              "\"@id\": \"https://example.com/super-media-tool/video/1225\","+
-              "\"@type\": \"http://purl.imsglobal.org/caliper/v1/VideoObject\","+
+              "\"id\": \"https://example.com/super-media-tool/video/1225\","+
+              "\"type\": \"http://purl.imsglobal.org/caliper/v1/VideoObject\","+
               "\"name\": \"American Revolution - Key Figures Video\","+
               "\"description\": null,"+
               "\"objectType\": [ ],"+
               "\"alignedLearningObjective\": ["+
                   "{"+
                       "\"@context\": \"http://purl.imsglobal.org/ctx/caliper/v1/Context\","+
-                      "\"@id\": \"https://example.edu/american-revolution-101/personalities/learn\","+
-                      "\"@type\": \"http://purl.imsglobal.org/caliper/v1/LearningObjective\","+
+                      "\"id\": \"https://example.edu/american-revolution-101/personalities/learn\","+
+                      "\"type\": \"http://purl.imsglobal.org/caliper/v1/LearningObjective\","+
                       "\"name\": null,"+
                       "\"description\": null,"+
                       "\"extensions\": { },"+
@@ -73,8 +73,8 @@ public class MediaEventTest {
           "},"+
           "\"target\": {"+
               "\"@context\": \"http://purl.imsglobal.org/ctx/caliper/v1/Context\","+
-              "\"@id\": \"https://example.com/super-media-tool/video/1225\","+
-              "\"@type\": \"http://purl.imsglobal.org/caliper/v1/MediaLocation\","+
+              "\"id\": \"https://example.com/super-media-tool/video/1225\","+
+              "\"type\": \"http://purl.imsglobal.org/caliper/v1/MediaLocation\","+
               "\"name\": null,"+
               "\"description\": null,"+
               "\"objectType\": [ ],"+
@@ -92,8 +92,8 @@ public class MediaEventTest {
           "\"eventTime\": \"2015-09-15T10:15:00.000Z\","+
           "\"edApp\": {"+
               "\"@context\": \"http://purl.imsglobal.org/ctx/caliper/v1/Context\","+
-              "\"@id\": \"https://example.com/super-media-tool\","+
-              "\"@type\": \"http://purl.imsglobal.org/caliper/v1/SoftwareApplication\","+
+              "\"id\": \"https://example.com/super-media-tool\","+
+              "\"type\": \"http://purl.imsglobal.org/caliper/v1/SoftwareApplication\","+
               "\"name\": \"Super Media Tool\","+
               "\"description\": null,"+
               "\"extensions\": { },"+
@@ -102,14 +102,14 @@ public class MediaEventTest {
           "},"+
           "\"group\": {"+
               "\"@context\": \"http://purl.imsglobal.org/ctx/caliper/v1/Context\","+
-              "\"@id\": \"https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001\","+
-              "\"@type\": \"http://purl.imsglobal.org/caliper/v1/lis/Group\","+
+              "\"id\": \"https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001\","+
+              "\"type\": \"http://purl.imsglobal.org/caliper/v1/lis/Group\","+
               "\"name\": \"Discussion Group 001\","+
               "\"description\": null,"+
               "\"subOrganizationOf\": {"+
                     "\"@context\": \"http://purl.imsglobal.org/ctx/caliper/v1/Context\","+
-                    "\"@id\": \"https://example.edu/politicalScience/2015/american-revolution-101/section/001\","+
-                    "\"@type\": \"http://purl.imsglobal.org/caliper/v1/lis/CourseSection\","+
+                    "\"id\": \"https://example.edu/politicalScience/2015/american-revolution-101/section/001\","+
+                    "\"type\": \"http://purl.imsglobal.org/caliper/v1/lis/CourseSection\","+
                     "\"courseNumber\": \"POL101\","+
                     "\"name\": \"American Revolution 101\","+
                     "\"description\": null,"+
@@ -117,8 +117,8 @@ public class MediaEventTest {
                     "\"academicSession\": \"Fall-2015\","+
                     "\"subOrganizationOf\": {"+
                       "\"@context\": \"http://purl.imsglobal.org/ctx/caliper/v1/Context\","+
-                      "\"@id\": \"https://example.edu/politicalScience/2015/american-revolution-101\","+
-                      "\"@type\": \"http://purl.imsglobal.org/caliper/v1/lis/CourseOffering\","+
+                      "\"id\": \"https://example.edu/politicalScience/2015/american-revolution-101\","+
+                      "\"type\": \"http://purl.imsglobal.org/caliper/v1/lis/CourseOffering\","+
                       "\"courseNumber\": \"POL101\","+
                       "\"name\": \"Political Science 101: The American Revolution\","+
                       "\"description\": null,"+
@@ -138,8 +138,8 @@ public class MediaEventTest {
          "},"+
          "\"membership\": {"+
              "\"@context\": \"http://purl.imsglobal.org/ctx/caliper/v1/Context\","+
-             "\"@id\": \"https://example.edu/politicalScience/2015/american-revolution-101/roster/554433\","+
-             "\"@type\": \"http://purl.imsglobal.org/caliper/v1/lis/Membership\","+
+             "\"id\": \"https://example.edu/politicalScience/2015/american-revolution-101/roster/554433\","+
+             "\"type\": \"http://purl.imsglobal.org/caliper/v1/lis/Membership\","+
              "\"name\": \"American Revolution 101\","+
              "\"description\": \"Roster entry\","+
              "\"member\": \"https://example.edu/user/554433\","+
