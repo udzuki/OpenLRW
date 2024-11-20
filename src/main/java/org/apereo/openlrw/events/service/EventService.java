@@ -92,7 +92,6 @@ public class EventService {
               .withObject(toBeSaved.getObject())
               .withTarget(toBeSaved.getTarget())
               .withType(toBeSaved.getType())
-              .withTimeZoneOffset(offset)
               .build();
     }
 
